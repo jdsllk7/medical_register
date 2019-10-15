@@ -11,7 +11,7 @@ var db = admin.firestore();
 exports.helloWorld = functions.https.onRequest((request, response) => {
 
     const data = {
-        data: request.query.name, 
+        data: request.query.name,
     };
     console.log(request.query.name + " has deployed");
 

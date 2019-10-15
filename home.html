@@ -1,0 +1,230 @@
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>RemoteHealth | Home</title>
+
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link href="/public/materialize/materials_icons/css/material-icons.css" rel="stylesheet" /> -->
+    <link href="/public/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/materialize/css/materialize.min.css">
+    <link rel="manifest" href="/public/manifest.json">
+
+    <!-- brower icons -->
+    <link rel="icon" type="image/gif" href="/public/img/icons/icon-72x72.png">
+    <link rel="shortcut icon" href="/public/img/icons/icon-72x72.png">
+
+    <!-- ios support -->
+    <link rel="apple-touch-icon" href="/public/img/icons/icon-96x96.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#2e7d32">
+
+    <meta name="theme-color" content="#2e7d32">
+
+    <!--Import jQuery before materialize.js-->
+    <script src="/public/js/jquery-3.4.1.min.js"></script>
+    <script src="/public/materialize/js/materialize.min.js"></script>
+
+  </head>
+
+
+
+  <body class="grey darken-3">
+
+    <!-- top nav -->
+    <div class="navbar-fixed">
+      <nav class="green darken-3" style="z-index: 999;">
+        <div class="nav-wrapper container">
+          <a class="brand-logo center"><h5>RemoteHealth</h5></a>
+          <a onclick="document.getElementById('loader-wrapper2').style.display=
+            'block';" href="/respond"><i class="left material-icons">add_alert</i><span
+              class="nav_badge new badge blue"><strong id='data_count'></strong></span></a>
+          <a onclick="document.getElementById('loader-wrapper2').style.display=
+            'block';" href="/signOut" class="right">LogOut</a>
+        </div>
+      </nav>
+    </div>
+
+    <form class="container row white-text" id="patient_form_id" autocomplete="on"
+      onsubmit="document.getElementById('loader-wrapper2').style.display=
+      'block';">
+
+      <div>
+
+        <h5 style="margin-bottom:20px;margin-top:40px;" class="col s10
+          offset-s1">Patient's
+          info
+          <i class="material-icons">info_outline</i></h5>
+
+        <div style="margin-bottom:20px;" class="input-field col s10 offset-s1">
+          <input id="patient_name" type="text" class="validate"
+            name="patient_name" required>
+          <label for="patient_name" class="white-text">Full Name</label>
+        </div>
+
+        <div style="margin-bottom:20px;" class="input-field col s5 offset-s1">
+          <input id="patient_age" type="number" class="validate"
+            name="patient_age" required>
+          <label for="patient_age" class="white-text">Age</label>
+        </div>
+        <div class="input-field col s5">
+          <select name="ageType" id="ageType">
+            <option value="years" selected>Years</option>
+            <option value="months">Months</option>
+            <option value="weeks">Weeks</option>
+          </select>
+          <label class="white-text">Select Age Type</label>
+        </div>
+
+
+        <div style="margin-bottom:20px;" class="col s10 offset-s1">
+          <p class="col s10"><b>SEX</b></p>
+          <p>
+            <label class="white-text" for="male">
+              <input class="with-gap white" id="male" name="sex" value="Male" type="radio"
+                checked/>
+              <span>Male</span>
+            </label>
+          </p>
+          <p>
+            <label class="white-text" for="female">
+              <input class="with-gap white" id="female"name="sex" value="Female"
+                type="radio" />
+              <span>Female</span>
+            </label>
+          </p>
+        </div>
+
+      </div>
+
+      <h5 class="col s10 offset-s1" style="margin-bottom:20px;margin-top:30px;">Medical
+        Tests <i class="material-icons">local_hospital</i><br></h5>
+
+
+      <div style="margin-bottom:20px;" class="input-field col s10 offset-s1">
+        <input id="patient_temp" type="text" class="validate"
+          name="patient_temp">
+        <label for="patient_temp" class="white-text">Temperature (℃)</label>
+      </div>
+
+
+      <div style="margin-bottom:20px;" class="input-field col s10 offset-s1">
+        <input id="patient_bp" type="text" class="validate" name="patient_bp">
+        <label for="patient_bp" class="white-text">Blood Pressure (mmHg)</label>
+      </div>
+
+
+      <div style="margin-bottom:20px;" class="input-field col s10 offset-s1">
+        <input id="patient_weight" type="text" class="validate"
+          name="patient_weight">
+        <label for="patient_weight" class="white-text">Weight (kg)</label>
+      </div>
+
+
+      <div style="margin-bottom:20px;" class="input-field col s10 offset-s1">
+        <textarea name="extraInfo" id="textarea1" class="materialize-textarea"
+          maxlength="200"
+          data-length="200"></textarea>
+        <label for="textarea1" class="white-text">Extra info (Optional)</label>
+      </div>
+
+
+      <h5 class="col s10 offset-s1" style="margin-bottom:30px;margin-top:30px;">Response
+        info <i class="material-icons">my_location</i><br></h5>
+
+
+      <div style="margin-bottom:30px;" class="input-field col s10 offset-s1">
+        <select name="priority" id="priority">
+          <option value="" selected></option>
+          <option value="critical">Critical</option>
+        </select>
+        <label class="white-text">Response Priority</label>
+      </div>
+
+
+      <div style="margin-bottom:30px;" class="input-field col s10 offset-s1">
+        <select name="location" id="location" onchange="getLocation()">
+          <option value="" selected></option>
+          <option value="Health Center">Health Center</option>
+          <option value="Remote Location">Remote Location</option>
+        </select>
+        <label class="white-text">Patient's Location</label>
+      </div>
+
+
+      <div style="margin-bottom:50px;" class="input-field col s6 offset-s3
+        center">
+        <button class="btn waves-effect waves-light green darken-3"
+          type="submit" name="patient_submit">submit<i class="material-icons
+            right">open_in_new</i>
+        </button>
+      </div>
+
+
+    </form>
+
+
+    <div id="loader-wrapper" class="loader-wrapper center grey darken-3">
+      <div class="preloader-wrapper active">
+        <div class="spinner-layer spinner-white-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+      <h6 id="activatePush" class="center white-text text-lighten-3">Google is
+        getting your location...</h6>
+      <a id="hideMeToo" href="/home" class="btn waves-effect waves-light green
+        darken-3">Refresh</a>
+    </div>
+
+    <div id="loader-wrapper2" class="loader-wrapper center grey darken-3">
+      <div class="preloader-wrapper active">
+        <div class="spinner-layer spinner-white-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCb5QTtOqAeW7jvKamFDHUWXHSuvxT5__A",
+        authDomain: "nyumba-246417.firebaseapp.com",
+        databaseURL: "https://nyumba-246417.firebaseio.com",
+        projectId: "nyumba-246417",
+        storageBucket: "nyumba-246417.appspot.com",
+        messagingSenderId: "581948417790",
+        appId: "1:581948417790:web:b844ec71ae0ebcae3b27af"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
+
+
+    <script src="/public/js/app.js"></script>
+    <script src="/public/js/ui.js"></script>
+    <script src="/public/js/db.js"></script>
+
+  </body>
+</html>

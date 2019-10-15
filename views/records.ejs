@@ -1,0 +1,105 @@
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Health Monitor | Records</title>
+
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <!-- <link href="/public/materialize/materials_icons/css/material-icons.css" rel="stylesheet" /> -->
+    <link href="/public/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/materialize/css/materialize.min.css">
+    <link rel="manifest" href="/public/manifest.json">
+
+    <!-- brower icons -->
+    <link rel="icon" type="image/gif" href="/public/img/icons/icon-72x72.png">
+    <link rel="shortcut icon" href="/public/img/icons/icon-72x72.png">
+
+    <!-- ios support -->
+    <link rel="apple-touch-icon" href="/public/img/icons/icon-96x96.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#2e7d32">
+
+    <meta name="theme-color" content="#2e7d32">
+
+    <!--Import jQuery before materialize.js-->
+    <script src="/public/js/jquery-3.4.1.min.js"></script>
+    <script src="/public/materialize/js/materialize.min.js"></script>
+
+  </head>
+
+
+
+  <body class="grey lighten-3">
+
+    <!-- top nav -->
+    <div class="navbar-fixed">
+      <nav class="pink darken-4" style="z-index: 999;">
+        <div class="nav-wrapper container">
+          <a class="brand-logo left"><h5>Health Monitor</h5></a>
+          <ul id="nav-mobile" class="right">
+              <a href="/"><i class='material-icons'>keyboard_backspace</i></a>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+
+
+
+    <div class="med_data row container">
+
+      <br>
+      <h5 class="center black-text">Medical Records</h5><br>
+      <i id="sendTo" class="left black-text">Sent To: <%= email %></i>
+
+    </div>
+    <div class="center">
+      <a onclick="M.toast({html: 'Email Has Been Sent<i class=\'material-icons\'>mail</i>'});document.getElementById('loader-wrapper2').style.display='block';" href="/emailSent" class="center btn waves-effect waves-light
+        pink darken-4">Share<i class='material-icons right'>mail</i></a>
+    </div>
+
+
+    <div id="loader-wrapper2" class="loader-wrapper center grey lighten-3">
+      <div class="preloader-wrapper active">
+        <div class="spinner-layer spinner-white-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCb5QTtOqAeW7jvKamFDHUWXHSuvxT5__A",
+        authDomain: "nyumba-246417.firebaseapp.com",
+        databaseURL: "https://nyumba-246417.firebaseio.com",
+        projectId: "nyumba-246417",
+        storageBucket: "nyumba-246417.appspot.com",
+        messagingSenderId: "581948417790",
+        appId: "1:581948417790:web:b844ec71ae0ebcae3b27af"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
+    <script src="/public/js/app.js"></script>
+    <script src="/public/js/ui.js"></script>
+    <script src="/public/js/db.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Health Monitor | Email</title>
+
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <!-- <link href="/public/materialize/materials_icons/css/material-icons.css" rel="stylesheet" /> -->
+    <link href="/public/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/materialize/css/materialize.min.css">
+    <link rel="manifest" href="/public/manifest.json">
+
+    <!-- brower icons -->
+    <link rel="icon" type="image/gif" href="/public/img/icons/icon-72x72.png">
+    <link rel="shortcut icon" href="/public/img/icons/icon-72x72.png">
+
+    <!-- ios support -->
+    <link rel="apple-touch-icon" href="/public/img/icons/icon-96x96.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#2e7d32">
+
+    <meta name="theme-color" content="#2e7d32">
+
+    <!--Import jQuery before materialize.js-->
+    <script src="/public/js/jquery-3.4.1.min.js"></script>
+    <script src="/public/materialize/js/materialize.min.js"></script>
+
+  </head>
+
+
+
+  <body class="grey lighten-3">
+
+    <!-- top nav -->
+    <div class="navbar-fixed">
+      <nav class="pink darken-4" style="z-index: 999;">
+        <div class="nav-wrapper container">
+          <a class="brand-logo left"><h5>Health Monitor</h5></a>
+          <ul id="nav-mobile" class="right">
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+
+
+
+    <form class="row container emails_form" id='emails_form' method="GET"
+      action="/setCookie"
+      autocomplete="on"
+      onsubmit="document.getElementById('loader-wrapper2').style.display='block';">
+
+      <br>
+      <br>
+      <h5 class="center black-text">Welcome</h5><br>
+      <h6 class="center black-text">Enter Email You Wish To Share Your
+        Medical Records With...</h6>
+      <br>
+      <br>
+      <br>
+
+      <div class="input-field col s10 m8 l6 offset-s1 offset-m2 offset-l3">
+        <input id="email" type="email" class="black-text validate" name="email"
+          autofocus required autocomplete="on">
+        <label for="email" class="black-text">Enter Email Address</label>
+      </div>
+      <div class="input-field col s6 offset-s3 center">
+        <button class="btn waves-effect waves-light pink darken-4"
+          type="submit"
+          name="action">Submit
+        </button>
+      </div>
+
+    </form>
+
+    <div id="loader-wrapper2" class="loader-wrapper center grey lighten-3">
+      <div class="preloader-wrapper active">
+        <div class="spinner-layer spinner-white-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <script>
+      $(document).ready(function () {
+        
+        $('.tooltipped').tooltip();
+        
+          var text = '<span class="white-text text-darken-4"><b>Welcome to Your Health Monitor</b></span>';
+          M.toast({ html: text });
+
+      });
+    </script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCb5QTtOqAeW7jvKamFDHUWXHSuvxT5__A",
+        authDomain: "nyumba-246417.firebaseapp.com",
+        databaseURL: "https://nyumba-246417.firebaseio.com",
+        projectId: "nyumba-246417",
+        storageBucket: "nyumba-246417.appspot.com",
+        messagingSenderId: "581948417790",
+        appId: "1:581948417790:web:b844ec71ae0ebcae3b27af"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
+    <script src="/public/js/app.js"></script>
+    <script src="/public/js/ui.js"></script>
+    <script src="/public/js/db.js"></script>
+
+  </body>
+</html>

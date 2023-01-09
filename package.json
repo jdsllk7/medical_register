@@ -17,7 +17,7 @@
     "nodemon": "^1.19.2"
   },
   "dependencies": {
-    "firebase-admin": "^8.6.0",
-    "firebase-functions": "^3.3.0"
+    "firebase-admin": "^11.4.1",
+    "firebase-functions": "^3.24.1"
   }
 }
